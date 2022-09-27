@@ -1,12 +1,12 @@
 const data  = JSON.parse(localStorage.getItem('notesData')) || [
     {
         id: 0,
-        body: "Enter text here"
+        body: "Enter note here"
     },
 ]
 
-const saveDataToLocalStorage = ()=>{
-    localStorage.setItem('notesData', JSON.stringify(data))
+const saveDataToLocalStorage = (notes)=>{
+    localStorage.setItem('notesData', JSON.stringify(notes))
 }
 
 export {data, saveDataToLocalStorage};
