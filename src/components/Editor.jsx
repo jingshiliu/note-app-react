@@ -1,18 +1,17 @@
-import React from "react"
+import React, {useState}from "react"
 import '../App.css'
+import PropertyEditor from "./PropertyEditor";
+import TextEditor from "./TextEditor";
+
 
 export default function Editor({currentNoteID, notes, updateNote}) {
+    const [textContent, setTextContent] = useState(notes.find(note => note.id === currentNoteID).body)
 
+    const textEditorProps = {textContent, setTextContent, updateNote}
     return (
         <div className='Editor'>
-            <input onChange={()=>{
-                        updateNote(document.querySelector('.Editor input').value)
-                    }}
-                   className='editor-body form-control'
-                   type="text"
-                   value={notes.find(note => note.id === currentNoteID).body}
-            />
-
+            <PropertyEditor />
+            <TextEditor {...textEditorProps} />
         </div>
     )
 }

@@ -1,4 +1,123 @@
 .App{
     display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+}
 
+/*--------------------------------Sidebar styling---------------------------*/
+.Sidebar{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    overflow-y: scroll;
+}
+
+#app-name{
+    width: 100%;
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.sidebar-button{
+    color: grey;
+    cursor: pointer;
+    padding-left: 20%;
+    height: 100px;
+    min-height: 75px;
+    border: none;
+    background-color: transparent;
+    text-align: start;
+    font-size: 20px;
+}
+
+.sidebar-button:hover{
+    background-color: #8ecae6;
+    color: white;
+}
+
+.sidebar-button-selected{
+    background-color: #8ecae6;
+    color: white;
+}
+
+.new-note-button{
+    color: white;
+    background-color: #219ebc;
+}
+
+.new-note-button:hover{
+    background-color: #219ebce0;
+}
+
+
+.SidebarPreview{
+    display: flex;
+    align-items: center;
+    font-size: larger;
+}
+
+
+/*--------------------------------Editor styling---------------------------*/
+.Editor{
+    width: 100%;
+    height: inherit;
+    overflow-y: inherit;
+}
+
+.PropertyEditor{
+    width: inherit;
+    height: 105px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    border-bottom: 1px solid #219ebc;
+}
+
+.TextEditor{
+    width: 98%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 1em;
+    border-radius:0 1em 0 0;
+    margin-top: 105px;
+    border-left: 1px solid #219ebc;
+}
+
+/*.TextEditor:focus{*/
+/*    border: none;*/
+/*    border-left: 1px solid #219ebc;*/
+/*}*/
+
+.note-type-buttons-container{
+    display: inline-block;
+    border: 1px solid #219ebc;
+    border-radius: 1em;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.note-type-button{
+    background-color: transparent;
+    border: none;
+}
+
+.note-type-button:hover{
+    background-color: #219ebc;
+    color: white;
+}
+
+.note-type-buttons-container .note-type-button:first-child{
+    padding-left: 1em;
+}
+
+.note-type-buttons-container .note-type-button:last-child{
+    padding-right: 1em;
+}
+
+.note-type-button-selected{
+    background-color: #219ebc;
+    color: white;
 }

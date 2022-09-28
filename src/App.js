@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import Sidebar from "./components/Sidebar"
 import Editor from "./components/Editor"
-import Header from "./components/Header";
 import {nanoid} from "nanoid"
 import {data, saveDataToLocalStorage} from "./data";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -14,7 +13,7 @@ export default function App() {
 
     function updateNote(text) {
         setNotes(notes.map(note => {
-            if(note.id === currentNoteID)
+            if (note.id === currentNoteID)
                 return {...note, body: text}
             return note
         }))
@@ -26,17 +25,17 @@ export default function App() {
             id: nanoid(),
             body: 'Write notes here...'
         }
-        setNotes({...notes, newNote})
+        let newNotes = [...notes, newNote]
+        setNotes(newNotes)
         setCurrentNoteID(newNote.id)
+        saveDataToLocalStorage(newNotes)
     }
 
     const editorProps = {currentNoteID, notes, updateNote}
-    const sidebarProps = {createNote, notes, setCurrentNoteID}
+    const sidebarProps = {createNote, notes, setCurrentNoteID, currentNoteID}
 
     return (
         <div className='App'>
-            <span>Hello</span>
-            <Header />
             <Sidebar {...sidebarProps}/>
             <Editor {...editorProps}/>
         </div>
