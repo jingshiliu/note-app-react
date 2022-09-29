@@ -1,0 +1,7 @@
+.DraftEditor-root{
+    margin-top: 100px;
+    padding: 1em;
+    border-left: 1px solid #219ebc;
+    height: 100vh;
+    overflow-y: scroll;
+}

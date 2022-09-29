@@ -1,7 +1,7 @@
 const data  = JSON.parse(localStorage.getItem('notesData')) || [
     {
         id: 0,
-        body: "Enter note here"
+        body: "Enter note here..."
     },
 ]
 

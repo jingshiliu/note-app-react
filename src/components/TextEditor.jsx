@@ -1,29 +1,17 @@
-import React, {useRef, useState} from 'react'
-import ContentEditable from "react-contenteditable";
+import React from 'react'
+import {Editor, RichUtils} from 'draft-js'
+import '../css/Draft.css';
 
-export default function TextEditor({textContent, setTextContent, updateNote}){
-    // return (
-    //     <div className='TextEditor form-control'
-    //          onInput={e => {
-    //              setTextContent(e.target.innerText)
-    //              updateNote(e.target.innerText)
-    //          }}
-    //          contentEditable={true}>
-    //         {textContent}
-    //     </div>
-    // )
-    const ref = useRef(textContent)
+export default function TextEditor({editorState, setEditorState, updateNote}){
 
     return (
-        <ContentEditable
-            className='TextEditor form-control'
-            innerRef={ref}
-            html={textContent} // innerHTML of the editable div
-            disabled={false}       // use true to disable editing
-            onChange={e =>{
-                setTextContent(e.target.value)
-                updateNote(e.target.value)
-            }} // handle innerHTML change
+        <Editor
+            editorState={editorState}
+            onChange={function (editorState){
+                console.log(editorState);
+                setEditorState(editorState)
+                updateNote()
+            }}
         />
     )
 }

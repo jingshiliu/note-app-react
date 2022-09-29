@@ -2,7 +2,7 @@ import React from "react"
 import './SidebarPreview'
 import SidebarPreview from "./SidebarPreview";
 
-export default function Sidebar({notes, createNote, setCurrentNoteID, currentNoteID}) {
+export default function Sidebar({notes, createNote, setCurrentNoteID, currentNoteID, changeNoteInEditor}) {
     let count = 1;
     return(
         <div className='Sidebar'>
@@ -10,11 +10,14 @@ export default function Sidebar({notes, createNote, setCurrentNoteID, currentNot
             <button className='sidebar-button new-note-button' onClick={createNote}>New Note + </button>
             {
                 notes.map(note => {
-                    return <SidebarPreview setCurrentNoteID={setCurrentNoteID}
-                                           currentNoteID={currentNoteID}
-                                           innerText={`Note ${count++}`}
-                                           noteID={note.id}
-                                           key={note.id} />
+                    return <SidebarPreview
+                        setCurrentNoteID={setCurrentNoteID}
+                        currentNoteID={currentNoteID}
+                        innerText={`Note ${count++}`}
+                        noteID={note.id}
+                        key={note.id}
+                        changeNoteInEditor={changeNoteInEditor}
+                    />
                 })
             }
         </div>
