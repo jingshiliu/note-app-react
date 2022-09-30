@@ -1,11 +1,10 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import Sidebar from "./components/Sidebar"
 import MyEditor from "./components/MyEditor"
 import {nanoid} from "nanoid"
 import {data, saveDataToLocalStorage} from "./data";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {EditorState, convertToRaw} from 'draft-js'
-import draftToHtml from 'draftjs-to-html'
+import {EditorState, convertToRaw, convertFromRaw} from 'draft-js'
 import {draftToMarkdown, markdownToDraft} from "markdown-draft-js";
 import './css/Draft.css';
 import './css/App.css'
@@ -14,7 +13,23 @@ import './css/App.css'
 export default function App() {
     const [notes, setNotes] = useState(data)
     const [currentNoteID, setCurrentNoteID] = useState(notes[0].id)
-    const [editorState, setEditorState] = useState(EditorState.createWithText(notes.find(note => note.id === currentNoteID).body))
+    const [noteType, setNoteType] = useState('plain-note')
+    const [editorState, setEditorState] = useState(getPlainNoteContent())
+
+    useEffect(()=>{
+        if(noteType === 'plain-note')
+            setEditorState(getPlainNoteContent())
+        else
+            setEditorState(getMarkdownContent())
+    }, [noteType])
+
+    function getPlainNoteContent(){
+        return EditorState.createWithContent(convertFromRaw(markdownToDraft(notes.find(note => note.id === currentNoteID).body)))
+    }
+
+    function getMarkdownContent(){
+        return EditorState.createWithText(notes.find(note=>note.id === currentNoteID).body)
+    }
 
 
     function updateNote() {
@@ -41,9 +56,10 @@ export default function App() {
 
     function changeNoteInEditor(noteID){
         setEditorState(EditorState.createWithText(notes.find(note => note.id === noteID).body))
+        EditorState.createWithContent()
     }
 
-    const editorProps = {currentNoteID, notes, updateNote, editorState, setEditorState}
+    const editorProps = {currentNoteID, notes, updateNote, editorState, setEditorState, noteType, setNoteType}
     const sidebarProps = {createNote, notes, setCurrentNoteID, currentNoteID, changeNoteInEditor}
 
     return (

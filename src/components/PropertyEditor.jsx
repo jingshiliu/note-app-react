@@ -1,24 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
+import NoteTypeToggler from "./NoteTypeToggler";
+import PlainNotePropertyEditor from "./PlainNotePropertyEditor";
 
-export default function PropertyEditor(){
-    const [selection, setSelection] = useState( 'plain-note');
+export default function PropertyEditor({noteType, setNoteType, setEditorState, editorState}){
+    const noteTypeTogglerProps = {noteType, setNoteType}
+    const plainNotePropertyEditorProps = {setEditorState, editorState}
 
-    let plainNoteButton
-    let markdownButton
-    if(selection === 'plain-note'){
-        plainNoteButton = <button className='note-type-button note-type-button-selected' onClick={()=>setSelection('plain-note')}>Plain Note</button>
-        markdownButton = <button className='note-type-button' onClick={()=>setSelection('markdown')}>Markdown</button>
-    } else{
-        plainNoteButton = <button className='note-type-button' onClick={()=>setSelection('plain-note')}>Plain Note</button>
-        markdownButton = <button className='note-type-button note-type-button-selected' onClick={()=>setSelection('markdown')}>Markdown</button>
-    }
+    let propertyEditor;
+    if(noteType === 'plain-note')
+        propertyEditor = <PlainNotePropertyEditor {...plainNotePropertyEditorProps}/>
+
 
     return (
         <div className='PropertyEditor'>
-            <div className='note-type-buttons-container'>
-                {plainNoteButton}
-                {markdownButton}
-            </div>
+            <NoteTypeToggler {...noteTypeTogglerProps} />
+            {propertyEditor}
         </div>
     )
 }

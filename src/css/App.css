@@ -86,12 +86,7 @@
     border-left-color: #219ebc;
 }
 
-/*.TextEditor:focus{*/
-/*    border: none;*/
-/*    border-left: 1px solid #219ebc;*/
-/*}*/
-
-.note-type-buttons-container{
+.NoteTypeToggler{
     display: inline-block;
     border: 2px solid #219ebc;
     border-radius: 1em;
@@ -119,6 +114,22 @@
 }
 
 .note-type-button-selected{
+    background-color: #219ebc;
+    color: white;
+}
+
+/* ------------------ Property Editor Styling ------------------ */
+.property-editor-button{
+    border: 2px solid #219ebc;
+    padding: 0.1em 2em;
+    border-radius: 1.5em;
+    background-color: transparent;
+    color: grey;
+    margin-top: 1em;
+    margin-right: 2em;
+}
+
+.property-editor-button:hover{
     background-color: #219ebc;
     color: white;
 }
