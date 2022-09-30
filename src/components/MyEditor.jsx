@@ -13,3 +13,5 @@ export default function MyEditor({updateNote, editorState, setEditorState, noteT
         </div>
     )
 }
+
+

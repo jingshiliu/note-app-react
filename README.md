@@ -1,3 +1,26 @@
+
+# Note App React
+
+Created a Note App that can write plain note and covert the plain note to markdown code.
+User can also write mark-down code which can be coverted to plain note, or rendered version.
+
+Using localstorage to save the note data. 
+Implemented editor by `Draft.js` with `markdown-draft-js` as a plugin.
+
+##### Thought
+
+This project spent longer than I expected because of the editor. First I used a generic HTML `<input/>` tag as editor and then think `<textarea/>`
+might be a better choice. However, both of them lack the function to edit rich text. Then I changed to `React-ContentEditable` but `useState` hook has
+no effect on it. Finally, the last moment, Draft.js appeared to me and I dived into the docs of this wondeful library.
+
+##### What I learned
+
+Even though I have made a lot of projects, I really didn't spend much time read the docs from beginning to end. Most of time, I just google and find
+answer through links. I'm happy that I did this and it can't be done easily without the wonderful docs made by Draft.js team.
+
+![alt text](note-app.gif)
+
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
