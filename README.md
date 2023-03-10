@@ -1,7 +1,7 @@
 
 # Note App React
 
-![alt text](https://jingshiliu.github.io/note-app-react/)
+[Demo Here](https://jingshiliu.github.io/note-app-react/)
 
 Created a Note App that can write plain note and covert the plain note to markdown code.
 User can also write mark-down code which can be coverted to plain note, or rendered version.
